@@ -13,7 +13,7 @@ export default createSchema({
   types: schemaTypes.concat([
     {
       title: "Coins",
-      name: "coin",
+      name: "coins",
       type: "document",
       fields: [
         {
