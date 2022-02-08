@@ -2,7 +2,7 @@ import Main from '../components/Main';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import Sidebar from '../components/SideBar';
+import Sidebar from '../components/Sidebar';
 import { ethers } from "ethers"
 import { ThirdwebSDK } from '@3rdweb/sdk';
 
