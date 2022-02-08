@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { useState } from 'react';
 import Transfer from './Transfer';
 import CoinSelector from './CoinSelector';
-import { TailSpin } from "react-loader-spinner"
+// import { TailSpin } from "react-loader-spinner"
 import Receive from './Receive';
 
 const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
@@ -59,12 +59,12 @@ const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
                         fontSize: '1.5rem',
                     }}>
                         <h2>Transfer in progress...</h2>
-                        <TailSpin
+                        {/* <TailSpin
                             height="100"
                             width="100"
                             color="#3773f5"
                             ariaLabel="loading"
-                        />
+                        /> */}
                     </div>
                 )
             case 'transferred':
