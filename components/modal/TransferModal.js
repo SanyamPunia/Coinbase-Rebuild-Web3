@@ -60,8 +60,8 @@ const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
                     }}>
                         <h2>Transfer in progress...</h2>
                         <TailSpin
-                            height="80"
-                            width="80"
+                            height="100"
+                            width="100"
                             color="#3773f5"
                             ariaLabel="loading"
                         />
