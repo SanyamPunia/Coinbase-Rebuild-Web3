@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import { ethers } from "ethers"
 import { ThirdwebSDK } from '@3rdweb/sdk';
+import Head from 'next/head';
 
 const sdk = new ThirdwebSDK(
   new ethers.Wallet(
@@ -39,21 +40,26 @@ const Dashboard = ({ address }) => {
   // console.log('Sanity: ', thirdWebTokens);
 
   return (
-    <Wrapper>
-      <Sidebar />
-      <MainContainer>
-        <Header
-          walletAddress={address}
-          sanityTokens={sanityTokens}
-          thirdWebTokens={thirdWebTokens}
-        />
-        <Main
-          walletAddress={address}
-          sanityTokens={sanityTokens}
-          thirdWebTokens={thirdWebTokens}
-        />
-      </MainContainer>
-    </Wrapper>
+    <>
+      <Head>
+        <title>Dashboard</title>
+      </Head>
+      <Wrapper>
+        <Sidebar />
+        <MainContainer>
+          <Header
+            walletAddress={address}
+            sanityTokens={sanityTokens}
+            thirdWebTokens={thirdWebTokens}
+          />
+          <Main
+            walletAddress={address}
+            sanityTokens={sanityTokens}
+            thirdWebTokens={thirdWebTokens}
+          />
+        </MainContainer>
+      </Wrapper>
+    </>
   )
 };
 
