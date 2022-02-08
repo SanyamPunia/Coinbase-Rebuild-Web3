@@ -30,10 +30,17 @@ const Header = ({ walletAddress, sanityTokens, thirdWebTokens, connectWallet }) 
     <Wrapper>
       <Title>Assests</Title>
       <ButtonsContainer>
-        <WalletLink>
-          <WalletLinkTitle>Wallet Connected</WalletLinkTitle>
-          <WalletAddress>{walletAddress.slice(0, 7)}...{walletAddress.slice(35)}</WalletAddress>
-        </WalletLink>
+        {walletAddress ? (
+          <WalletLink>
+            <WalletLinkTitle>Wallet Connected</WalletLinkTitle>
+            <WalletAddress>{walletAddress.slice(0, 7)}...{walletAddress.slice(35)}</WalletAddress>
+          </WalletLink>
+        ) : (
+          <Button onClick={() => connectedWallet('injected')}>
+            Connect Wallet
+          </Button>
+        )}
+
         <Button style={{ backgroundColor: "#3773f5", color: "#000" }}>
           Buy / Sell
         </Button>
@@ -46,9 +53,9 @@ const Header = ({ walletAddress, sanityTokens, thirdWebTokens, connectWallet }) 
         onRequestClose={() => router.push('/')}
         style={customStyles}
       >
-        <TransferModal 
+        <TransferModal
           sanityTokens={sanityTokens}
-          thirdWebTokens={thirdWebTokens} 
+          thirdWebTokens={thirdWebTokens}
           walletAddress={walletAddress}
         />
       </Modal>

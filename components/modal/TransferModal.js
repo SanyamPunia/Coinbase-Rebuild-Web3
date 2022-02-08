@@ -2,6 +2,9 @@ import React from 'react';
 import styled from "styled-components"
 import { useState } from 'react';
 import Transfer from './Transfer';
+import CoinSelector from './CoinSelector';
+import { TailSpin } from "react-loader-spinner"
+import Receive from './Receive';
 
 const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
     const [action, setAction] = useState('send');
@@ -19,18 +22,68 @@ const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
     }
 
     const selectedModal = (option) => {
-        switch(option) {
+        switch (option) {
             case 'send':
-                return <Transfer 
-                    selectedToken={selectedToken} 
-                    setAction={setAction} 
-                    thirdWebTokens={thirdWebTokens} 
+                return <Transfer
+                    selectedToken={selectedToken}
+                    setAction={setAction}
+                    thirdWebTokens={thirdWebTokens}
                     walletAddress={walletAddress}
                 />
             case 'receive':
-                return <h2>receive</h2>
+                return (
+                    <Receive 
+                        selectedToken={selectedToken}
+                        walletAddress={walletAddress}
+                        setAction={setAction}
+                    />
+                )
+            case 'select':
+                return <CoinSelector
+                    setAction={setAction}
+                    selectedToken={selectedToken}
+                    setSelectedToken={setSelectedToken}
+                    sanityTokens={sanityTokens}
+                    thirdWebTokens={thirdWebTokens}
+                    walletAddress={walletAddress}
+                />
+            case 'transferring':
+                return (
+                    <div style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        fontSize: '1.5rem',
+                    }}>
+                        <h2>Transfer in progress...</h2>
+                        <TailSpin
+                            height="80"
+                            width="80"
+                            color="#3773f5"
+                            ariaLabel="loading"
+                        />
+                    </div>
+                )
+            case 'transferred':
+                return (
+                    <div style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        fontSize: '2rem',
+                        fontWeight: '600',
+                        color: '#27ad75',
+                    }}>
+                       Transfer complete 
+                    </div>
+                )
             default:
-                return <h2>send</h2>
+                return <h2>Send</h2>
         }
     }
 
@@ -38,10 +91,10 @@ const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
         <Wrapper>
             <Selector>
                 <Option style={action == 'send' ? selectedStyle : unselectedStyle} onClick={() => setAction('send')}>
-                    <p>send</p>
+                    <p>Send</p>
                 </Option>
                 <Option style={action == 'receive' ? selectedStyle : unselectedStyle} onClick={() => setAction('receive')} >
-                    <p>receive</p>
+                    <p>Receive</p>
                 </Option>
             </Selector>
             <ModalMain>

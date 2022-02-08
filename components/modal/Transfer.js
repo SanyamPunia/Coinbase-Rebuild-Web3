@@ -40,6 +40,7 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress }) =
     const sendCrypto = async (amount, recipient) => {
         console.log("sending crypto...");
         if (activeThirdWebToken && amount && recipient) {
+            setAction("transferring")
             const tx = await activeThirdWebToken.transfer(
                 recipient, amount.toString().concat('000000000000000000')
             );
@@ -82,7 +83,7 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress }) =
                 <Divider />
                 <Row>
                     <FieldName>Pay With</FieldName>
-                    <CoinSelectList>
+                    <CoinSelectList onClick={() => setAction('select')}>
                         <Icon>
                             <img src={imageUrl} alt="" />
                         </Icon>
