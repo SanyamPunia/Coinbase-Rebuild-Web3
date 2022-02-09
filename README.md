@@ -9,7 +9,7 @@
 
 
 ## 🙋‍♂️ What is Coinbase Web3 Rebuild?
-### It is a Cypto Transaction web app similar to **`Coinbase`** made using Blockchain & Web3 tech stack!
+### It is a Crypto Transaction web app similar to **`Coinbase`** made using Blockchain & Web3 tech stack!
 
 ---
 
